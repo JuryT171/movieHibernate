@@ -16,15 +16,13 @@ public class Main {
         configuration.addAnnotatedClass(Staff.class);
         configuration.addAnnotatedClass(Customer.class);
 
-        try (SessionFactory sessionFactory = configuration.buildSessionFactory();
-             Session session = sessionFactory.openSession()) {
+        try (SessionFactory sessionFactory = configuration.buildSessionFactory()) {
 
-            Store store = session.get(Store.class, (byte) 1);
-            System.out.println("Адрес магазина: " + store.getAddress().getAddress());
-            System.out.println("Страна: " + store.getAddress().getCity().getCountry().getCountry());
+            Customer customer = CustomerService.createCustomer(
+                    sessionFactory, "Иван", "Иванов", "ivanov@example.com");
 
-            Long customers = session.createQuery("select count(c) from Customer c", Long.class).uniqueResult();
-            System.out.println("Покупателей: " + customers);
+            System.out.println("Создан покупатель id=" + customer.getCustomerId()
+                    + " (" + customer.getFirstName() + " " + customer.getLastName() + ")");
         }
     }
 }

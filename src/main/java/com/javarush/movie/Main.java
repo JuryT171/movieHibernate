@@ -1,7 +1,6 @@
 package com.javarush.movie;
 
 import com.javarush.movie.entity.*;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -9,6 +8,12 @@ public class Main {
     public static void main(String[] args) {
         Configuration configuration = new Configuration();
         configuration.configure();
+        configuration.addAnnotatedClass(FilmText.class);
+        configuration.addAnnotatedClass(Actor.class);
+        configuration.addAnnotatedClass(Category.class);
+        configuration.addAnnotatedClass(FilmActor.class);
+        configuration.addAnnotatedClass(FilmCategory.class);
+        configuration.addAnnotatedClass(Payment.class);
         configuration.addAnnotatedClass(Language.class);
         configuration.addAnnotatedClass(Film.class);
         configuration.addAnnotatedClass(Inventory.class);
@@ -24,11 +29,18 @@ public class Main {
 
             Customer customer = CustomerService.createCustomer(
                     sessionFactory, "Иван", "Иванов", "ivanov@example.com");
-
-            com.javarush.movie.RentalService.returnFilm(sessionFactory);
-
             System.out.println("Создан покупатель id=" + customer.getCustomerId()
                     + " (" + customer.getFirstName() + " " + customer.getLastName() + ")");
+
+            RentalService.returnFilm(sessionFactory);
+            Rental rental = com.javarush.movie.RentalService.rentFilm(sessionFactory, customer.getCustomerId(), "AFFAIR PREJUDICE");
+            System.out.println("Новая аренда id=" + rental.getRentalId());
+
+            Film newFilm = FilmService.createNewFilm(sessionFactory, "JAVA RUSH: THE MOVIE");
+            //  сразу арендуем снятый фильм
+            RentalService.rentFilm(sessionFactory, customer.getCustomerId(), newFilm.getTitle());
+
+
         }
     }
 }

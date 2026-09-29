@@ -22,29 +22,7 @@ public class City {
     @Column(name = "last_update", insertable = false, updatable = false)
     private LocalDateTime lastUpdate;
 
-    public Short getCityId() {
-        return cityId;
-    }
 
-    public void setCityId(Short cityId) {
-        this.cityId = cityId;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public Country getCountry() {
-        return country;
-    }
-
-    public void setCountry(Country country) {
-        this.country = country;
-    }
 
     public LocalDateTime getLastUpdate() {
         return lastUpdate;

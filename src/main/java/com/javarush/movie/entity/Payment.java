@@ -22,7 +22,7 @@ public class Payment {
     private Staff staff;
 
     // в БД колонка rental_id nullable, но при аренде мы всегда её заполняем
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "rental_id")
     private Rental rental;
 
@@ -36,17 +36,7 @@ public class Payment {
     private LocalDateTime lastUpdate;
 
 
-    public Short getPaymentId() {
-        return paymentId;
-    }
 
-    public void setPaymentId(Short paymentId) {
-        this.paymentId = paymentId;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
 
     public void setCustomer(Customer customer) {
         this.customer = customer;

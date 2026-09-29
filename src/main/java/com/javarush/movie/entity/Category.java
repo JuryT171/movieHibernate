@@ -19,13 +19,6 @@ public class Category {
     private LocalDateTime lastUpdate;
 
 
-    public Byte getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(Byte categoryId) {
-        this.categoryId = categoryId;
-    }
 
     public String getName() {
         return name;

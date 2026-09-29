@@ -19,13 +19,6 @@ public class Language {
     private LocalDateTime lastUpdate;
 
 
-    public Byte getLanguageId() {
-        return languageId;
-    }
-
-    public void setLanguageId(Byte languageId) {
-        this.languageId = languageId;
-    }
 
     public String getName() {
         return name;

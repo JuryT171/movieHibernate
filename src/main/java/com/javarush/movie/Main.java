@@ -33,7 +33,7 @@ public class Main {
                     + " (" + customer.getFirstName() + " " + customer.getLastName() + ")");
 
             RentalService.returnFilm(sessionFactory);
-            Rental rental = com.javarush.movie.RentalService.rentFilm(sessionFactory, customer.getCustomerId(), "AFFAIR PREJUDICE");
+            Rental rental = RentalService.rentFilm(sessionFactory, customer.getCustomerId(), "AFFAIR PREJUDICE");
             System.out.println("Новая аренда id=" + rental.getRentalId());
 
             Film newFilm = FilmService.createNewFilm(sessionFactory, "JAVA RUSH: THE MOVIE");

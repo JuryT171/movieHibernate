@@ -94,17 +94,7 @@ public class Film {
         this.language = language;
     }
 
-    public Language getOriginalLanguage() {
-        return originalLanguage;
-    }
 
-    public void setOriginalLanguage(Language originalLanguage) {
-        this.originalLanguage = originalLanguage;
-    }
-
-    public Integer getRentalDuration() {
-        return rentalDuration;
-    }
 
     public void setRentalDuration(Integer rentalDuration) {
         this.rentalDuration = rentalDuration;
@@ -118,9 +108,6 @@ public class Film {
         this.rentalRate = rentalRate;
     }
 
-    public Integer getLength() {
-        return length;
-    }
 
     public void setLength(Integer length) {
         this.length = length;

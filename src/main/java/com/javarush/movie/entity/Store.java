@@ -17,7 +17,7 @@ public class Store {
     @JoinColumn(name = "manager_staff_id")
     private Staff managerStaff;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "address_id")
     private Address address;
 
@@ -25,29 +25,7 @@ public class Store {
     private LocalDateTime lastUpdate;
 
 
-    public Byte getStoreId() {
-        return storeId;
-    }
 
-    public void setStoreId(Byte storeId) {
-        this.storeId = storeId;
-    }
-
-    public Staff getManagerStaff() {
-        return managerStaff;
-    }
-
-    public void setManagerStaff(Staff managerStaff) {
-        this.managerStaff = managerStaff;
-    }
-
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
 
     public LocalDateTime getLastUpdate() {
         return lastUpdate;

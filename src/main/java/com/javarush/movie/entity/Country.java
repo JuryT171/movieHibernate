@@ -18,21 +18,7 @@ public class Country {
     @Column(name = "last_update", insertable = false, updatable = false)
     private LocalDateTime lastUpdate;
 
-    public Short getCountryId() {
-        return countryId;
-    }
 
-    public void setCountryId(Short countryId) {
-        this.countryId = countryId;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
 
     public LocalDateTime getLastUpdate() {
         return lastUpdate;

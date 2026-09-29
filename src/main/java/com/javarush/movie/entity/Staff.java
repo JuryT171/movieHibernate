@@ -25,6 +25,10 @@ public class Staff {
     @Column(name = "email", length = 50)
     private String email;
 
+    @Lob
+    @Column(name = "picture", columnDefinition = "BLOB")
+    private byte[] picture;
+
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "store_id")
     private Store store;
@@ -41,12 +45,13 @@ public class Staff {
     @Column(name = "last_update", insertable = false, updatable = false)
     private LocalDateTime lastUpdate;
 
-    public Byte getStaffId() {
-        return staffId;
+
+    public byte[] getPicture() {
+        return picture;
     }
 
-    public void setStaffId(Byte staffId) {
-        this.staffId = staffId;
+    public void setPicture(byte[] picture) {
+        this.picture = picture;
     }
 
     public String getFirstName() {
@@ -61,57 +66,6 @@ public class Staff {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public Store getStore() {
-        return store;
-    }
-
-    public void setStore(Store store) {
-        this.store = store;
-    }
-
-    public boolean isActive() {
-        return active;
-    }
-
-    public void setActive(boolean active) {
-        this.active = active;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
     public LocalDateTime getLastUpdate() {
         return lastUpdate;

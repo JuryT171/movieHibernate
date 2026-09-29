@@ -38,13 +38,7 @@ public class Rental {
         return rentalId;
     }
 
-    public void setRentalId(Integer rentalId) {
-        this.rentalId = rentalId;
-    }
 
-    public LocalDateTime getRentalDate() {
-        return rentalDate;
-    }
 
     public void setRentalDate(LocalDateTime rentalDate) {
         this.rentalDate = rentalDate;

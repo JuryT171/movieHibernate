@@ -22,7 +22,7 @@ public class Customer {
     @Column(name = "last_name", nullable = false, length = 45)
     private String lastName;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "address_id")
     private Address address;
 
@@ -42,13 +42,6 @@ public class Customer {
         return customerId;
     }
 
-    public void setCustomerId(Short customerId) {
-        this.customerId = customerId;
-    }
-
-    public Store getStore() {
-        return store;
-    }
 
     public void setStore(Store store) {
         this.store = store;
@@ -70,33 +63,23 @@ public class Customer {
         this.lastName = lastName;
     }
 
-    public Address getAddress() {
-        return address;
-    }
 
     public void setAddress(Address address) {
         this.address = address;
     }
 
-    public String getEmail() {
-        return email;
-    }
 
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public boolean isActive() {
-        return active;
-    }
+
 
     public void setActive(boolean active) {
         this.active = active;
     }
 
-    public LocalDateTime getCreateDate() {
-        return createDate;
-    }
+
 
     public void setCreateDate(LocalDateTime createDate) {
         this.createDate = createDate;

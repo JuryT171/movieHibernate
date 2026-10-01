@@ -5,6 +5,10 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
+// «у этого класса нет собственной жизни:
+// он не самостоятельная энтити, а часть другой».
+// FilmActorId не мапится на свою таблицу — его содержимое встраивается в FilmActor (владельца, у которого стоит @EmbeddedId).
+// В таблице film_actor нет колонок «класса-ключа» — есть только film_id и actor_id, которые ключ предоставляет через свои связи.
 @Embeddable
 public class FilmActorId implements Serializable {
 

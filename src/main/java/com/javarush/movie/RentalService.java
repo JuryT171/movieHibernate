@@ -64,12 +64,13 @@ public class RentalService {
                 // не существует открытой аренды по этому инвентарю
                 Inventory inventory = session.createQuery("""
                             select i from Inventory i
-                            where i.film.title = :title
+                            where i.film.title = :title     
                               and i.store.storeId = 1
                               and not exists (select r from Rental r
                                               where r.inventory = i
                                                 and r.returnDate is null)
                             """, Inventory.class)
+                        // у Inventory есть поле film (ManyToOne), у Film — поле title
                         .setParameter("title", filmTitle)
                         .setMaxResults(1)
                         .uniqueResult();
@@ -78,7 +79,7 @@ public class RentalService {
                     throw new IllegalStateException(
                             "Свободных копий фильма \"" + filmTitle + "\" в магазине 1 нет");
                 }
-
+                // создаем аренду
                 Rental rental = new Rental();
                 rental.setRentalDate(LocalDateTime.now());
                 rental.setInventory(inventory);

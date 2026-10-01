@@ -21,8 +21,9 @@ public class Address {
     @Column(name = "district", nullable = false, length = 20)
     private String district;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "city_id")
+    // много адрессов могут ссылаться на один город
+    @ManyToOne(fetch = FetchType.LAZY, optional = false) // город не загружается сразу с адресом. Вместо объекта Hibernate подкладывает прокси.
+    @JoinColumn(name = "city_id") // имя колонки-внешнего ключа в таблице address
     private City city;
 
     @Column(name = "postal_code", length = 10)

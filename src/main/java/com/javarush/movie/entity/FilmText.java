@@ -13,6 +13,7 @@ public class FilmText {
 
     @OneToOne(fetch = FetchType.LAZY)
     @MapsId // PK этой энтити берётся из связи с Film
+    // на join-колонке — обязательная пара с @MapsId, иначе Hibernate попытается записать film_id дважды (из id-поля и из связи) и упадёт с ошибкой маппинга.
     @JoinColumn(name = "film_id", insertable = false, updatable = false)
     private Film film;
 

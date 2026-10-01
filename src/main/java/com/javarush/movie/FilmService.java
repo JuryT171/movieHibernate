@@ -16,7 +16,7 @@ public class FilmService {
     public static Film createNewFilm(SessionFactory sessionFactory, String title) {
         try (Session session = sessionFactory.openSession()) {
             Transaction transaction = session.beginTransaction();
-            try {
+            try { // ссылаем на английский язык фильма
                 Language language = session.createQuery(
                                 "select l from Language l where l.name = 'English'", Language.class)
                         .uniqueResult();
@@ -55,7 +55,7 @@ public class FilmService {
                 }
 
                 for (Category category : categories) {
-                    FilmCategoryId key = new FilmCategoryId();
+                    FilmCategoryId key = new FilmCategoryId(); // перв ключ
                     key.setFilm(film);
                     key.setCategory(category);
                     FilmCategory filmCategory = new FilmCategory();
